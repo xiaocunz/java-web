@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.ipharmacare.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.ipharmacare.com" xmlns:intf="http://service.ipharmacare.com" xmlns:tns1="http://bean.ipharmacare.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.ipharmacare.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="AuditData">
+    <sequence>
+     <element name="charset" nillable="true" type="xsd:string"/>
+     <element name="validate" nillable="true" type="xsd:string"/>
+     <element name="xml" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.ipharmacare.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.ipharmacare.com"/>
+   <element name="auditData" type="tns1:AuditData"/>
+   <element name="auditCenterReturn" type="xsd:string"/>
+   <element name="auditData1" type="tns1:AuditData"/>
+   <element name="doubleSignReturn" type="xsd:string"/>
+   <element name="obtainAuditResultReturn" type="xsd:string"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="obtainAuditResultResponse">
+
+      <wsdl:part element="impl:obtainAuditResultReturn" name="obtainAuditResultReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doubleSignResponse">
+
+      <wsdl:part element="impl:doubleSignReturn" name="doubleSignReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtainAuditResultRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="auditCenterResponse">
+
+      <wsdl:part element="impl:auditCenterReturn" name="auditCenterReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="auditCenterRequest">
+
+      <wsdl:part element="impl:auditData" name="auditData"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doubleSignRequest">
+
+      <wsdl:part element="impl:auditData1" name="auditData"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SfWebService">
+
+      <wsdl:operation name="auditCenter" parameterOrder="auditData">
+
+         <wsdl:input message="impl:auditCenterRequest" name="auditCenterRequest"/>
+
+         <wsdl:output message="impl:auditCenterResponse" name="auditCenterResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doubleSign" parameterOrder="auditData">
+
+         <wsdl:input message="impl:doubleSignRequest" name="doubleSignRequest"/>
+
+         <wsdl:output message="impl:doubleSignResponse" name="doubleSignResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtainAuditResult">
+
+         <wsdl:input message="impl:obtainAuditResultRequest" name="obtainAuditResultRequest"/>
+
+         <wsdl:output message="impl:obtainAuditResultResponse" name="obtainAuditResultResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SfWebServiceSoapBinding" type="impl:SfWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="auditCenter">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="auditCenterRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="auditCenterResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doubleSign">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="doubleSignRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="doubleSignResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtainAuditResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtainAuditResultRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtainAuditResultResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SfWebServiceService">
+
+      <wsdl:port binding="impl:SfWebServiceSoapBinding" name="SfWebService">
+
+         <wsdlsoap:address location="http://localhost:8080//services/com/ipharmacare/service/SfWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
